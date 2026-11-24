@@ -1,0 +1,33 @@
+/* Additional alignment and interaction refinements */
+:root{--content-width:1160px;--section-space:clamp(76px,9vw,118px)}
+.section-wrap,.projects-section{width:min(var(--content-width),calc(100% - 64px));margin-inline:auto}
+.section-block{padding-block:var(--section-space);grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr);column-gap:clamp(48px,7vw,92px);row-gap:42px}
+.about-content,.skills-content{width:100%;max-width:none;min-width:0}
+.about-facts{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.about-facts>div{min-width:0;min-height:112px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.skill-group{grid-template-columns:minmax(118px,.36fr) minmax(0,1fr);align-items:start;column-gap:22px}
+.projects-section{display:block;padding-block:var(--section-space)}
+.projects-top{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.62fr);align-items:end;gap:56px;margin:0 0 42px}
+.project-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.project-row{min-height:100%;overflow:hidden}
+.project-main{min-width:0}
+.project-main p{min-height:0}
+.project-tech{margin-top:auto}
+.journey-section .section-block{grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)}
+.journey-section .section-heading{grid-column:1;grid-row:1}
+.journey-section .timeline{grid-column:2;grid-row:1;width:100%;min-width:0}
+.journey-section .journey-note{grid-column:2;grid-row:2;width:100%;margin:0}
+.contact-section{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center}
+@media(max-width:800px){
+ .section-wrap,.projects-section{width:min(100% - 40px,680px)}
+ .section-block{grid-template-columns:1fr;gap:32px;padding-block:82px}
+ .skill-group{grid-template-columns:1fr;gap:10px}
+ .projects-top{grid-template-columns:1fr;gap:18px;margin-bottom:30px}
+ .project-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .journey-section .section-block{grid-template-columns:1fr;gap:30px}
+ .journey-section .section-heading,.journey-section .timeline,.journey-section .journey-note{grid-column:1;grid-row:auto}
+ .timeline-item{grid-template-columns:130px minmax(0,1fr)}
+ .contact-section{grid-template-columns:1fr;gap:38px}
+}
+@media(max-width:560px){.section-wrap,.projects-section{width:calc(100% - 36px)}.project-list{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr;gap:9px}.about-facts{gap:7px}}
+@media(prefers-reduced-motion:reduce){.project-row,.timeline-item,.journey-note{transition:none!important}}
