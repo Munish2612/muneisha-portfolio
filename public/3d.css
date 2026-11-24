@@ -1,0 +1,39 @@
+/* Premium glass and subtle 3D motion layer */
+body{perspective:1500px;isolation:isolate}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(180,190,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(180,190,255,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 82%)}
+body:after{content:"";position:fixed;width:42vw;height:42vw;right:-12vw;top:16vh;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(95,196,255,.17),rgba(151,83,255,.09) 38%,transparent 70%);filter:blur(22px);animation:ambientFloat 13s ease-in-out infinite alternate}
+.hero-copy{animation:heroEnter 1s cubic-bezier(.2,.75,.25,1) both}
+.project-visual{isolation:isolate}
+.project-visual:before{content:"";position:absolute;z-index:1;top:-30%;left:-70%;width:42%;height:160%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),rgba(158,139,255,.12),transparent);transform:skewX(-18deg);animation:visualSheen 8s ease-in-out infinite}
+.project-visual>*{position:relative;z-index:2}
+.status-dot{animation:statusPulse 2.8s ease-in-out infinite}
+.skill-list span{transition:transform .28s ease,border-color .28s ease,background .28s ease}
+.skill-list span:hover{transform:translateY(-5px);border-color:rgba(169,154,255,.55);background:rgba(151,128,255,.14)}
+.visual-ring{transform-origin:center;animation:ringOrbit 12s linear infinite}
+.visual-ring.ring-b{animation-direction:reverse;animation-duration:17s}
+.ocean-grid{animation:oceanScan 5s ease-in-out infinite alternate}
+.heat-bars i{transform-origin:bottom;animation:heatDance 1.15s ease-in-out infinite alternate}
+.heat-bars i:nth-child(2n){animation-delay:.25s}.heat-bars i:nth-child(3n){animation-delay:.5s}
+.scheme-lines i{animation:lineGlow 2.8s ease-in-out infinite alternate}
+.crew-orbit{animation:crewSpin 18s linear infinite}
+.doc-sheet{animation:documentBob 4.5s ease-in-out infinite}
+.project-row:nth-child(2) .project-visual:before{animation-delay:1.2s}
+.project-row:nth-child(3) .project-visual:before{animation-delay:2.4s}
+.project-row:nth-child(4) .project-visual:before{animation-delay:3.6s}
+.project-row:nth-child(5) .project-visual:before{animation-delay:4.8s}
+.project-row:nth-child(6) .project-visual:before{animation-delay:6s}
+.timeline-item,.journey-note{transition:transform .35s,border-color .35s,box-shadow .35s}
+.timeline-item:hover,.journey-note:hover{transform:translateY(-6px);border-color:rgba(177,157,255,.45);box-shadow:0 25px 55px #0007,0 0 24px rgba(135,105,255,.12)}
+.back-top{transition:transform .25s,color .25s}.back-top:hover{transform:translateY(-4px);color:#9feaff}
+@keyframes ambientFloat{from{transform:translate3d(-3vw,-2vh,0) scale(.9)}to{transform:translate3d(2vw,5vh,0) scale(1.12)}}
+@keyframes heroEnter{from{opacity:0;transform:translateY(28px) rotateX(5deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
+@keyframes visualSheen{0%,58%{left:-70%;opacity:0}68%{opacity:1}88%,100%{left:135%;opacity:0}}
+@keyframes statusPulse{0%,100%{box-shadow:0 0 0 4px rgba(120,255,196,.08),0 0 12px rgba(120,255,196,.55)}50%{box-shadow:0 0 0 8px rgba(120,255,196,.025),0 0 22px rgba(120,255,196,.9)}}
+@keyframes ringOrbit{to{transform:rotate(360deg)}}
+@keyframes oceanScan{from{transform:translateY(-8px);opacity:.45}to{transform:translateY(8px);opacity:1}}
+@keyframes heatDance{from{transform:scaleY(.55);opacity:.55}to{transform:scaleY(1.12);opacity:1}}
+@keyframes lineGlow{from{opacity:.35;transform:scaleX(.82)}to{opacity:1;transform:scaleX(1)}}
+@keyframes crewSpin{to{transform:rotate(360deg)}}
+@keyframes documentBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+@media(max-width:800px){body{perspective:none}body:before{background-size:38px 38px;opacity:.1}.hero-copy{animation:none}.timeline-item:hover,.journey-note:hover{transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){body:after,.status-dot,.project-visual:before,.visual-ring,.ocean-grid,.heat-bars i,.scheme-lines i,.crew-orbit,.doc-sheet{animation:none!important}.skill-list span,.timeline-item,.journey-note,.back-top{transition:none!important}}
