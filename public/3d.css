@@ -35,5 +35,5 @@ body:after{content:"";position:fixed;width:42vw;height:42vw;right:-12vw;top:16vh
 @keyframes lineGlow{from{opacity:.35;transform:scaleX(.82)}to{opacity:1;transform:scaleX(1)}}
 @keyframes crewSpin{to{transform:rotate(360deg)}}
 @keyframes documentBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
-@media(max-width:800px){body{perspective:none}body:before{background-size:38px 38px;opacity:.1}.hero-copy{animation:none}.timeline-item:hover,.journey-note:hover{transform:translateY(-3px)}}
+@media(max-width:800px){body{perspective:none}body:before{background-size:38px 38px;opacity:.1}.hero-copy{animation:none}.project-row:hover .project-visual{transform:none}.timeline-item:hover,.journey-note:hover{transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){body:after,.status-dot,.project-visual:before,.visual-ring,.ocean-grid,.heat-bars i,.scheme-lines i,.crew-orbit,.doc-sheet{animation:none!important}.skill-list span,.timeline-item,.journey-note,.back-top{transition:none!important}}
