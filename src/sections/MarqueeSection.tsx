@@ -1,27 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 
 const IMAGES = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&h=675&q=70',
+  'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&h=675&q=70',
+];
+
+const ALTS = [
+  'Earth seen from space',
+  'Aerial view of the ocean surface',
+  'Industrial manufacturing plant',
+  'Modern city skyline',
+  'Event venue set up for a celebration',
+  'Writing workspace with documents',
+  'Satellite orbiting Earth',
+  'Notebook and study workspace',
 ];
 
 function useScrollOffset(ref: React.RefObject<HTMLElement>) {
@@ -42,11 +40,11 @@ function useScrollOffset(ref: React.RefObject<HTMLElement>) {
   return offset;
 }
 
-function Tile({ src }: { src: string }) {
+function Tile({ src, alt }: { src: string; alt: string }) {
   return (
     <img
       src={src}
-      alt=""
+      alt={alt}
       loading="lazy"
       className="h-[270px] w-[420px] rounded-2xl object-cover"
     />
@@ -56,8 +54,8 @@ function Tile({ src }: { src: string }) {
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const offset = useScrollOffset(sectionRef);
-  const row1 = IMAGES.slice(0, 11);
-  const row2 = IMAGES.slice(11);
+  const row1 = IMAGES.slice(0, 4);
+  const row2 = IMAGES.slice(4);
 
   return (
     <section
@@ -73,7 +71,7 @@ export default function MarqueeSection() {
           }}
         >
           {[...row1, ...row1, ...row1].map((src, i) => (
-            <Tile key={`r1-${i}`} src={src} />
+            <Tile key={`r1-${i}`} src={src} alt={ALTS[IMAGES.indexOf(src)] ?? ''} />
           ))}
         </div>
         <div
@@ -84,7 +82,7 @@ export default function MarqueeSection() {
           }}
         >
           {[...row2, ...row2, ...row2].map((src, i) => (
-            <Tile key={`r2-${i}`} src={src} />
+            <Tile key={`r2-${i}`} src={src} alt={ALTS[IMAGES.indexOf(src)] ?? ''} />
           ))}
         </div>
       </div>

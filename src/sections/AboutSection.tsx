@@ -34,7 +34,7 @@ const DECORATIONS = [
 ];
 
 const ABOUT_TEXT =
-  "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!";
+  "I'm Muneisha Chandru, a Computer Science and Engineering (AI & ML) student at Dhaanish Ahmed Institute of Technology. I enjoy turning ideas into working prototypes, learning by building, and exploring how technology can solve real-world problems. Let's build something incredible together!";
 
 export default function AboutSection() {
   return (
@@ -69,7 +69,6 @@ export default function AboutSection() {
           text={ABOUT_TEXT}
           className="about-text max-w-[560px] text-center font-medium leading-relaxed text-[#D7E2EA]"
         />
-
       </div>
 
       <div className="mt-16 flex justify-center sm:mt-20 md:mt-24">

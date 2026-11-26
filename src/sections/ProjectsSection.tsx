@@ -1,47 +1,76 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
-import LiveProjectButton from '../components/LiveProjectButton';
 
 interface Project {
   number: string;
   name: string;
   category: string;
-  col1Top: string;
-  col1Bottom: string;
-  col2: string;
+  description: string;
+  image: string;
+  alt: string;
 }
 
 const PROJECTS: Project[] = [
   {
     number: '01',
-    name: 'Nextlevel Studio',
-    category: 'Client',
-    col1Top:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-    col1Bottom:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
+    name: 'Sentinel AI',
+    category: 'Concept / Development',
+    description:
+      'An offline-first Android concept for detecting potential emergency events using smartphone sensors and providing emergency assistance.',
+    image:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Earth seen from space at night',
   },
   {
     number: '02',
-    name: 'Aura Brand Identity',
-    category: 'Personal',
-    col1Top:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-    col1Bottom:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
+    name: 'Oil Spill Detection AI',
+    category: 'Hackathon Project',
+    description:
+      'A satellite-imagery analysis concept combining SAR-based oil-spill segmentation, look-alike classification and drift forecasting.',
+    image:
+      'https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Aerial view of the ocean surface',
   },
   {
     number: '03',
-    name: 'Solaris Digital',
-    category: 'Client',
-    col1Top:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-    col1Bottom:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-    col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
+    name: 'FurnaceIQ',
+    category: 'Prototype',
+    description:
+      'A web-based furnace monitoring and energy analysis prototype that brings furnace inputs and performance insights into one place.',
+    image:
+      'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Industrial manufacturing plant',
+  },
+  {
+    number: '04',
+    name: 'Scheme Saathi',
+    category: 'Hackathon Prototype',
+    description:
+      'An AI-assisted government scheme discovery concept surfacing potentially relevant schemes, eligibility details and application guidance.',
+    image:
+      'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Modern city skyline with civic buildings',
+  },
+  {
+    number: '05',
+    name: 'CrewNexa',
+    category: 'Early-stage Venture',
+    description:
+      'A student-focused marketplace concept connecting college students seeking flexible event work with event contractors who need temporary staff.',
+    image:
+      'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Event venue set up for a celebration',
+  },
+  {
+    number: '06',
+    name: 'Manuscript Formatter',
+    category: 'Hackathon Concept',
+    description:
+      'A document-processing concept transforming raw DOCX manuscripts into publication-ready DOCX and PDF files through automated formatting.',
+    image:
+      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&h=675&q=70',
+    alt: 'Professional writing workspace',
   },
 ];
 
@@ -56,23 +85,23 @@ function ProjectCard({
   total: number;
   progress: MotionValue<number>;
 }) {
-  const targetScale = 1 - (total - 1 - index) * 0.03;
+  const targetScale = 1 - (total - 1 - index) * 0.015;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
   return (
-    <div className="sticky top-24 h-[85vh] md:top-32">
+    <div className="sticky top-24 md:top-32">
       <motion.div
         style={{
           scale,
-          top: `${index * 28}px`,
+          top: `${index * 20}px`,
           transformOrigin: 'top center',
         }}
-        className="rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:rounded-[50px] sm:p-6 md:rounded-[60px] md:p-8"
+        className="rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-6 sm:rounded-[50px] sm:p-8 md:rounded-[60px] md:p-10"
       >
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 sm:pb-8">
           <span
             className="font-black leading-none text-[#D7E2EA]"
-            style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 110px)' }}
           >
             {project.number}
           </span>
@@ -87,35 +116,21 @@ function ProjectCard({
               {project.name}
             </span>
           </div>
-          <LiveProjectButton />
         </div>
 
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <div className="flex w-full flex-col gap-4 sm:w-[40%]">
-            <img
-              src={project.col1Top}
-              alt={`${project.name} visual 1`}
-              loading="lazy"
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
-            />
-            <img
-              src={project.col1Bottom}
-              alt={`${project.name} visual 2`}
-              loading="lazy"
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
-            />
-          </div>
-          <div className="w-full sm:w-[60%]">
-            <img
-              src={project.col2}
-              alt={`${project.name} main visual`}
-              loading="lazy"
-              className="h-full min-h-[280px] w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-            />
-          </div>
-        </div>
+        <img
+          src={project.image}
+          alt={project.alt}
+          loading="lazy"
+          className="h-[220px] w-full rounded-[40px] object-cover sm:h-[300px] md:rounded-[50px] md:h-[340px] lg:rounded-[60px]"
+        />
+
+        <p
+          className="max-w-3xl pt-6 font-light leading-relaxed text-[#D7E2EA] opacity-70"
+          style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
+        >
+          {project.description}
+        </p>
       </motion.div>
     </div>
   );
@@ -138,11 +153,11 @@ export default function ProjectsSection() {
           className="hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Project
+          Projects
         </h2>
       </FadeIn>
 
-      <div ref={containerRef}>
+      <div ref={containerRef} className="flex flex-col gap-8 md:gap-12">
         {PROJECTS.map((project, i) => (
           <ProjectCard
             key={project.number}
@@ -154,8 +169,15 @@ export default function ProjectsSection() {
         ))}
       </div>
 
-      <div id="contact" className="flex justify-center pt-20">
-        <LiveProjectButton />
+      <div className="flex justify-center pt-20">
+        <a
+          href="https://github.com/muneishachandru-ai"
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 sm:text-base"
+        >
+          More experiments on GitHub ↗
+        </a>
       </div>
     </section>
   );

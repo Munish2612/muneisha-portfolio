@@ -4,7 +4,8 @@ interface ContactButtonProps {
 
 export default function ContactButton({ className = '' }: ContactButtonProps) {
   return (
-    <button
+    <a
+      href="mailto:muneishachandru@gmail.com"
       className={`rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest text-white ${className}`}
       style={{
         background:
@@ -16,6 +17,6 @@ export default function ContactButton({ className = '' }: ContactButtonProps) {
       }}
     >
       Contact Me
-    </button>
+    </a>
   );
 }
